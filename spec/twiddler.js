@@ -1,37 +1,5 @@
 /* eslint-disable */
 
-/*
-  Windows instructions blurb WIP
-  https://nickymeuleman.netlify.app/blog/gui-on-wsl2-cypress
-  https://techcommunity.microsoft.com/t5/windows-dev-appconsult/running-wsl-gui-apps-on-windows-10/ba-p/1493242
-
-  ## Windows users
-  To run the automated tests from Windows, a bit of extra setup is needed. Since WSL only provides a terminal environment, you'll need to install an "X server" which allows GUI applications to work properly.
-
-  ### Install VcXsrv
-  Download and install [VcXsrv from here](https://sourceforge.net/projects/vcxsrv/).
-  When launching this program, make sure to **check the box marked "Disable access control"**. To avoid needing to check this every time, on the final screen, you can click "Save configuration" to make a launchable file that bypasses these config screens.
-
-  ### Set up X server within WSL
-  From within a **WSL terminal**, run this command:
-
-  ```
-  echo export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0 > ~/.bashrc
-  ```
-  
-  To confirm that the command worked, restart your terminal and run `echo $DISPLAY`, and something should be printed to your terminal.
-
-  Make sure that VcXsrv is running on your computer before starting the Twiddler test runner. You'll need to do this every time your machine restarts.
-
-
-  ## For everyone:
-  Run `./start-spec-runner` from a terminal inside your Twiddler directory to start the test runner GUI.
-  In the first window, click on "twiddler.js" to open the Twiddler tests inside the runner.
-  On the left side of the screen, you'll see a list of tests, which will stop as soon as one fails.
-  After making changes to your application code, hit the "Run All Tests 🔁" button (or press the R key) to re-run the tests.
-
-*/
-
 // Configurable Cypress env:
 //   ALL_TESTS: run all tests, don't fail fast
 //   SKIP_FLAVOR_TEST: skips final "say when you feel like you are done" test
