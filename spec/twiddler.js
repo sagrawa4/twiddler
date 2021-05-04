@@ -450,7 +450,7 @@ describe('CSS Styling and Layout', function() {
 });
 
 if (!Cypress.env('SKIP_EXTRA_CREDIT')) {
-  describe('Extra credit', function() {
+  xdescribe('Extra credit', function() {
     describe('Friends list', function() {
       it('exists as a UL tag with an ID of "friends-list"', function() {
         cy.get('ul#friends-list').should('exist');
