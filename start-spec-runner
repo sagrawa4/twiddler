@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # check for X server if running on WSL
 if grep -qi microsoft /proc/version; then
