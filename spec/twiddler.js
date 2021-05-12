@@ -52,6 +52,9 @@ function getNewestRenderedTweetIndex() {
 var sharedTests = {
   noDuplicateTweetsRendered: function() {
     it('does not render duplicate Tweets', function() {
+      // A Set is an object which stores unique values:
+      // each value may only occur in a Set once.
+      // Adding a value that already exists in the Set will do nothing.
       var renderedTweets = new Set();
       cy.get('.tweet').each(function($tweet) {
         expect(renderedTweets.has($tweet.text())).to.eq(false);
@@ -137,6 +140,12 @@ describe('Home Feed', function() {
       cy.get('#update-feed').should('exist');
     });
 
+    it('is not empty', function() {
+      cy.get('#update-feed').should(function($elem) {
+        expect($elem.text()).to.not.be.empty;
+      });
+    });
+
     context('when clicked', function() {
       sharedTests.pageDoesNotRefresh(function() {
         cy.get('#update-feed').click();
@@ -153,30 +162,17 @@ describe('Home Feed', function() {
       sharedTests.noDuplicateTweetsRendered();
       sharedTests.tweetsRenderInReverseChronologicalOrder();
 
-      // DISCUSS: This test has been a bit flaky and misleading:
-      // Some users have extra content on the outside that can cause this to fail
-      // even if they aren't actually doing the bad thing
-      // NB: flaky or bad for: pritms, seanclaybaugh, ivapier
-      // test that h1, #feed, maybe other things still exist
-      // maybe get feed siblings, update, assert that those siblings still exist
-      xit('does not affect any other elements on the page except #feed', function() {
+      it('does not affect any other elements on the page except #feed', function() {
         cy.document().then(function(_document) {
-          function getNonFeedContents() {
-            return []
-              .concat(
-                Array.from(_document.body.children).filter(function(elem) {
-                  return elem.id !== 'app';
-                }),
-                Array.from(_document.getElementById('app').children).filter(function(elem) {
-                  return elem.id !== 'feed';
-                })
-              )
-              .map(function(elem) { return elem.outerHTML; })
-              .join('');
+          function getFeedSiblings() {
+            return Array.from(_document.getElementById('feed').parentElement.children)
+              .filter(function(elem) {
+                return elem.id !== 'feed';
+              });
           }
-          var before = getNonFeedContents();
+          var before = getFeedSiblings();
           cy.get('#update-feed').click().then(function() {
-            var after = getNonFeedContents();
+            var after = getFeedSiblings();
             expect(before).to.eq(after);
           });
         });
@@ -199,35 +195,41 @@ describe('Tweet UI Component', function() {
         cy.get(selector).each(function($elem, index) {
           var expectedTweet = _window.streams.home[newestTweetIndex - index];
           expect(expectedTweet).not.to.be.undefined;
-          callback($elem, expectedTweet, _window);
+          if (callback) {
+            callback($elem, expectedTweet, _window);
+          } else {
+            expect($elem).to.exist;
+          }
         });
       });
     });
   }
 
-  // MAYBE: try to conditional test for img OR background-image css property?
-  it('contains an img tag with a class of "profile-photo"', function() {
-    cy.get('.tweet img.profile-photo').should('exist');
-  });
+  assertEveryTweet('exists with a class of "tweet"', '.tweet');
 
+  assertEveryTweet('contains a child with a class of "message"', '.tweet .message');
   assertEveryTweet(
-    'contains a child with a class of "username", containing the username, prefixed by "@"',
+    'contains the message in the child with a class of "message"',
+    '.tweet .message',
+    function($message, tweet) {
+      expect($message).to.contain(tweet.message);
+    }
+  );
+  
+  assertEveryTweet('contains a child with a class of "username"', '.tweet .username');
+  assertEveryTweet(
+    'contains the username, prefixed by "@", in the child with a class of "username"',
     '.tweet .username',
     function($username, tweet) {
       expect($username).to.contain('@' + tweet.user);
     }
   );
 
-  assertEveryTweet(
-    'contains a child with a class of "message", containing the message',
-    '.tweet .message',
-    function($message, tweet) {
-      expect($message).to.contain(tweet.message);
-    }
-  );
+  assertEveryTweet('contains an img tag with a class of "profile-photo"', '.tweet img.profile-photo');
 
+  assertEveryTweet('contains a child with a class of "timestamp"', '.tweet .timestamp');
   assertEveryTweet(
-    'contains a child with a class of "timestamp", containing the timestamp',
+    'contains the timestamp in the child with a class of "timestamp"',
     '.tweet .timestamp',
     function($timestamp, tweet, _window) {
       if (_window.jQuery.timeago) {
@@ -239,7 +241,7 @@ describe('Tweet UI Component', function() {
     }
   );
 
-  it('uses a Tweet\'s created_at property for the timestamp, not the current time', function() {
+  it('uses the time from the Tweet data, not the current time', function() {
     cy.window().then(function(_window) {
       var dateSpy = cy.spy(_window, 'Date');
       var dateNowSpy = cy.spy(Date, 'now');
@@ -259,6 +261,18 @@ describe('Tweet UI Component', function() {
       });
     });
   });
+
+  assertEveryTweet(
+    'has no text nodes as direct descendants',
+    '.tweet',
+    function($tweet, tweet) {
+      var textNodeChildren = Array.from($tweet.get(0).childNodes)
+        .filter(function(node) {
+          return node.nodeType === 3 && node.textContent.trim().length > 0
+        });
+      expect(textNodeChildren.length).to.eq(0);
+    }
+  );
 
   describe('icons', function() {
     var iconClasses = ['comment', 'retweet', 'like', 'share'];
@@ -281,7 +295,7 @@ describe('Tweet UI Component', function() {
 
 describe('Libraries', function() {
   describe('timeago', function() {
-    it('is included', function() {
+    it('is included as a library in the project', function() {
       cy.window().then(function(_window) {
         var message = [
           'timeago is a jQuery plugin that can be used to format timestamps.',
@@ -294,7 +308,7 @@ describe('Libraries', function() {
       });
     });
 
-    it('is used', function() {
+    it('is used at least once', function() {
       cy.window().then(function(_window) {
         cy.spy(_window.jQuery, 'timeago');
         cy.spy(_window.jQuery.prototype, 'timeago');
