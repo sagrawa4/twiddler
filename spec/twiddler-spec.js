@@ -91,7 +91,9 @@ var sharedTests = {
 // Disable with Cypress env ALL_TESTS
 afterEach(function() {
   if (!Cypress.env('ALL_TESTS') && this.currentTest.state === 'failed') {
-     Cypress.runner.stop();
+    if (!this.currentTest._retries || this.currentTest._currentRetry === this.currentTest._retries - 1) {
+      Cypress.runner.stop();
+    }
   }
 });
 
@@ -173,7 +175,7 @@ describe('Home Feed', function() {
           var before = getFeedSiblings();
           cy.get('#update-feed').click().then(function() {
             var after = getFeedSiblings();
-            expect(before).to.eq(after);
+            expect(before).to.deep.eq(after);
           });
         });
       });
@@ -225,6 +227,18 @@ describe('Tweet UI Component', function() {
     }
   );
 
+  assertEveryTweet(
+    'has no text nodes as direct descendants',
+    '.tweet',
+    function($tweet, tweet) {
+      var textNodeChildren = Array.from($tweet.get(0).childNodes)
+        .filter(function(node) {
+          return node.nodeType === 3 && node.textContent.trim().length > 0
+        });
+      expect(textNodeChildren.length).to.eq(0);
+    }
+  );
+
   assertEveryTweet('contains an img tag with a class of "profile-photo"', '.tweet img.profile-photo');
 
   assertEveryTweet('contains a child with a class of "timestamp"', '.tweet .timestamp');
@@ -261,18 +275,6 @@ describe('Tweet UI Component', function() {
       });
     });
   });
-
-  assertEveryTweet(
-    'has no text nodes as direct descendants',
-    '.tweet',
-    function($tweet, tweet) {
-      var textNodeChildren = Array.from($tweet.get(0).childNodes)
-        .filter(function(node) {
-          return node.nodeType === 3 && node.textContent.trim().length > 0
-        });
-      expect(textNodeChildren.length).to.eq(0);
-    }
-  );
 
   describe('icons', function() {
     var iconClasses = ['comment', 'retweet', 'like', 'share'];
@@ -387,11 +389,8 @@ describe('User Feed', function() {
         retries: 3
       }, function() {
         cy.window().then(function(_window) {
-          var numTweets = _window.streams.home.length;
-          var generateRandomTweetSpy = cy.spy(_window, 'generateRandomTweet');
-          // TODO: This is SOMEHOW still flaky
           cy.get('#update-feed').click().then(function() {
-            expect(Cypress.$('.tweet').length).to.eq(numTweets + generateRandomTweetSpy.callCount);
+            expect(Cypress.$('.tweet').length).to.eq(_window.streams.home.length);
           });
         });
       });
