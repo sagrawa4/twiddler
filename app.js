@@ -36,11 +36,11 @@ $title.on("click", function(event) {
     }
     $tweet.append('<div class="username">' + '@'+tweet.user + '</div>')
     $tweet.append('<div class="message">' + tweet.message + '</div>')
-    $tweet.append('<div class="timestamp">' + tweet.created_at + '</div>')
-    $tweet.append('<img class="icon, comment" src="assets/icons/placeholder.png" />')
-    $tweet.append('<img class="icon, retweet" src="assets/icons/placeholder.png" />')
-    $tweet.append('<img class="icon, like" src="assets/icons/placeholder.png" />')
-    $tweet.append('<img class="icon, share" src="assets/icons/placeholder.png" />')
+    $tweet.append('<div class="timestamp">' + jQuery.timeago(tweet.created_at) + '</div>')
+    $tweet.append('<i class="fas fa-comment icon comment"></i>')
+    $tweet.append('<i class="fas fa-retweet icon retweet"></i>')
+    $tweet.append('<i class="far fa-thumbs-up icon like"></i>')
+    $tweet.append('<i class="fas fa-share icon share"></i>')
     $tweet.appendTo($feed);
     $feed.appendTo($app);
     index -= 1;
@@ -66,12 +66,12 @@ while(index >= 0){
   }
   $tweet.append('<div class="username">' + '@'+tweet.user + '</div>')
   $tweet.append('<div class="message">' + tweet.message + '</div>')
-  $tweet.append('<div class="timestamp">' + tweet.created_at + '</div>')
-  $tweet.append('<img class="icon, comment" src="assets/icons/placeholder.png" />')
-  $tweet.append('<img class="icon, retweet" src="assets/icons/placeholder.png" />')
-  $tweet.append('<img class="icon, like" src="assets/icons/placeholder.png" />')
-  $tweet.append('<img class="icon, share" src="assets/icons/placeholder.png" />')
-    $tweet.prependTo($feed);
+  $tweet.append('<div class="timestamp">' + jQuery.timeago(tweet.created_at) + '</div>')
+  $tweet.append('<i class="fas fa-comment icon comment"></i>')
+  $tweet.append('<i class="fas fa-retweet icon retweet"></i>')
+  $tweet.append('<i class="far fa-thumbs-up icon like"></i>')
+  $tweet.append('<i class="fas fa-share icon share"></i>')
+  $tweet.prependTo($feed);
     index -= 1;
   event.preventDefault();
 }
