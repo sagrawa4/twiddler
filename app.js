@@ -2,7 +2,7 @@ $(document).ready(function(){
   var $app = $('#app');
 
   // Create new HTML elements
-  var $title = $('<h1>Twiddler</h1>');
+  var $title = $('<h1>T.W.I.D.D.L.E.R</h1>');
   // Create event handler functions
   var handleTitleClick = function(event) {
     alert('The title of this page is: ' + event.target.innerText);
