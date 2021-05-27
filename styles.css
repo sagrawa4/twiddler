@@ -9,6 +9,89 @@ html, body, #app {
 providing a space for you to apply styles to your app's outermost HTML element - the #app itself. */
 
 #app {
-  background-color: green;
-  color: yellow;
+  /* Full height */
+  background-color: black;
+
 }
+
+h1 {
+ color: aliceblue;
+ text-align: center;
+ font-size: 80px;
+ padding:100px 0;
+
+}
+
+#update-feed {
+ text-align: center;
+ margin-left: 100px;
+ font-size: 50px;
+}
+
+/*.icon:hover {
+  color: blue;
+  float: left;
+}
+
+#feed{
+  background: url("assets/img/WallpaperDog-10865582.jpg");
+background-size: 100%;
+margin-top: 10%;
+margin-left: 40%;
+
+}
+
+.tweet {
+  padding-top: 50px;
+  color: aqua;
+
+}
+#profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  float:left
+}
+
+
+.username {
+  display:inline-block;
+  float:left;
+  color: yellowgreen;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  margin: 20;
+}
+
+.message {
+  float:left;
+  color: yellowgreen;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  margin-top: 20px;
+}
+.timestamp {
+  float:left;
+  color: yellowgreen;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  margin-top: 20px;
+}
+
+.icon {
+
+  margin-top: 20px;
+}
+
+
+@media screen and (max-width: 1060px) {
+  #primary { width:67%; }
+  #secondary { width:30%; margin-left:3%;}
+}*/
+
+/*.message {
+  font-family: 'Mate SC', serif;
+  background: url("assets/img/WallpaperDog-10865582.jpg");
+}*/
