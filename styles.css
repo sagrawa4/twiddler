@@ -20,7 +20,7 @@ providing a space for you to apply styles to your app's outermost HTML element -
 }
 
 body {
-
+  background: url("assets/img/WallpaperDog-10865582.jpg");
 }
 
 
@@ -47,7 +47,7 @@ h1 {
 }
 
 .tweet {
-  width: 800px;
+  width: 1000px;
   height: 250px;
   border-radius: 25px;
   border: 10px solid blueviolet;
@@ -86,14 +86,26 @@ h1 {
   color: yellowgreen;
   font-family: Arial, Helvetica, sans-serif;
   font-size: large;
-  margin-top: 20px;
+  float: left;
+  font-style: italic;
+  font-weight: 100;
 }
 
 .icon {
-
+  float: left;
+  margin:1pt;
+  width:72pt;
+  height:72pt;
 }
 
-
+.timestamp
+{
+    float: left;
+    margin:1pt;
+    width:72pt;
+    height:72pt;
+    padding-top: 80;
+}
 /*.icon:hover {
   color: blue;
   float: left;
@@ -113,6 +125,52 @@ h1 {
 background-size: 100%;
 margin-top: 10%;
 margin-left: 40%;
+
+.icon
+{
+    float: left;
+    margin:1pt;
+    width:72pt;
+    height:72pt;
+}
+.profile-photo
+{
+    float: left;
+    margin:1pt;
+    width:72pt;
+    height:72pt;
+}
+
+.username
+{
+    float: left;
+    margin:1pt;
+    width:72pt;
+    height:72pt;
+}
+
+.message
+{
+    float: left;
+    margin:1pt;
+    width:72pt;
+    height:72pt;
+}
+
+
+
+.feed
+{
+    text-align:center;
+    width:450pt;
+    height: 80pt;
+}
+.tweet
+{
+   margin: auto;
+   width: 302pt;
+}
+
 
 }
 
