@@ -22,7 +22,7 @@ $(document).ready(function(){
         var tweet = streams.home[index];
         var $tweet = $('<div class="tweet"></div>');
         //var $renderUser = $('<button class="username">' + '@'+tweet.user + '</button>')
-        $tweet.append('<img id="profile-photo" src="assets/img/' + tweet.user + '.png" />')
+        $tweet.append('<img class="profile-photo" src="assets/img/' + tweet.user + '.png" />')
         $tweet.append('<div class="username">' + '@'+tweet.user + '</div>')
         $tweet.append('<div class="message">' + tweet.message + '</div>')
         $tweet.append('<div class="timestamp">' + jQuery.timeago(tweet.created_at) + '</div>')
@@ -43,7 +43,7 @@ $(document).ready(function(){
       for(var tweet of index) {
         console.log(tweet);
         var $tweet = $('<div class="tweet"></div>');
-        $tweet.append('<img id="profile-photo" src="assets/img/' + tweet.user + '.png" />')
+        $tweet.append('<img class="profile-photo" src="assets/img/' + tweet.user + '.png" />')
         $tweet.append('<div class="username">' + '@'+tweet.user + '</div>')
         $tweet.append('<div class="message">' + tweet.message + '</div>')
         $tweet.append('<div class="timestamp">' + jQuery.timeago(tweet.created_at) + '</div>')
