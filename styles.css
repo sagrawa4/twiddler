@@ -8,15 +8,24 @@ html, body, #app {
 /* Continue building out the CSS styling for your Twiddler app below! We got you started by
 providing a space for you to apply styles to your app's outermost HTML element - the #app itself. */
 
+@font-face {
+  src: url(assets/font/GABRWFFR.TTF);
+  font-family: friendsfont;
+}
+
 #app {
   /* Full height */
-  background-color: black;
   text-align: center;
 
 }
 
+body {
+  background: url("assets/img/WallpaperDog-10865582.jpg");
+}
+
 h1 {
- color: aliceblue;
+ font-family: friendsfont;
+ color: whitesmoke;
  text-align: center;
  font-size: 80px;
  padding: 50px;
@@ -28,20 +37,26 @@ h1 {
  text-align: center;
  font-size: 50px;
  margin-bottom: 50px;
+ border-radius: 25px;
+ background-color: yellow;
+ font-family: friendsfont;
+ color: black;
 }
 
 .tweet {
-  width: 600px;
+  width: 800px;
   height: 200px;
+  border-radius: 25px;
   margin:auto;
-  border: 10px solid red;
+  border: 10px solid blueviolet;
   padding: 80px;
   color: aqua;
   margin-bottom: 50px;
+  background-color: blueviolet;
 
 }
 
-#profile-photo {
+.profile-photo {
   width: 200px;
   height: 150px;
   border-radius: 50%;
@@ -58,13 +73,31 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size:xx-large;
   position:relative;
-  right:400px;
+  right:300px;
 
 }
+
+.message {
+  float:left;
+  color: yellowgreen;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  margin-top: 20px;
+}
+
 
 /*.icon:hover {
   color: blue;
   float: left;
+}
+
+.timestamp {
+  color: yellowgreen;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:large;
+  position:relative;
+  left:20px
+
 }
 
 #feed{
@@ -80,22 +113,9 @@ margin-left: 40%;
 
 
 
-.username {
-  display:inline-block;
-  float:left;
-  color: yellowgreen;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: large;
-  margin: 20;
-}
 
-.message {
-  float:left;
-  color: yellowgreen;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: large;
-  margin-top: 20px;
-}
+
+
 .timestamp {
   float:left;
   color: yellowgreen;
