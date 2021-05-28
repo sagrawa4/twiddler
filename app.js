@@ -86,10 +86,7 @@ $(document).ready(function(){
 
     $updateFeed.on("click", handleButtonClick);
   }
-
   $('.username').on("click", handleUsernameClick);
 
   window.isItBeautifulYet = true
-
-
 });
