@@ -1,12 +1,8 @@
-/* These CSS rules apply to the <html>, <body>, and <div id="app"> HTML elements in index.html */
 html, body, #app {
   height: 100%;
   width: 100%;
   margin: 0;
 }
-
-/* Continue building out the CSS styling for your Twiddler app below! We got you started by
-providing a space for you to apply styles to your app's outermost HTML element - the #app itself. */
 
 @font-face {
   src: url(assets/font/GABRWFFR.TTF);
@@ -18,16 +14,12 @@ body {
   background: url("assets/img/WallpaperDog-10865582.jpg");
 }
 
-
-
 h1 {
  font-family: friendsfont;
  color: whitesmoke;
  text-align: center;
  font-size: 80px;
  padding: 50px;
-
-
 }
 
 #update-feed {
@@ -52,7 +44,6 @@ h1 {
   font-size: 30px;
   background-color: blueviolet;
   position:relative;
-
 }
 
 .profile-photo {
@@ -78,7 +69,6 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-
 }
 
 .message {
@@ -112,91 +102,4 @@ h1 {
   position:absolute;
   right:0;
   bottom: 0;
-
 }
-
-/*#feed{
-  background: url("assets/img/WallpaperDog-10865582.jpg");
-background-size: 100%;
-margin-top: 10%;
-margin-left: 40%;
-
-.icon {
-    float: left;
-    margin:1pt;
-    width:72pt;
-    height:72pt;
-}
-.profile-photo
-{
-    float: left;
-    margin:1pt;
-    width:72pt;
-    height:72pt;
-}
-
-.username
-{
-    float: left;
-    margin:1pt;
-    width:72pt;
-    height:72pt;
-}
-
-.message
-{
-    float: left;
-    margin:1pt;
-    width:72pt;
-    height:72pt;
-}
-
-
-
-.feed
-{
-    text-align:center;
-    width:450pt;
-    height: 80pt;
-}
-.tweet
-{
-   margin: auto;
-   width: 302pt;
-}
-
-
-}
-
-
-
-
-
-
-
-
-
-.timestamp {
-  float:left;
-  color: yellowgreen;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: large;
-  margin-top: 20px;
-}
-
-.icon {
-
-  margin-top: 20px;
-}
-
-
-@media screen and (max-width: 1060px) {
-  #primary { width:67%; }
-  #secondary { width:30%; margin-left:3%;}
-}*/
-
-/*.message {
-  font-family: 'Mate SC', serif;
-  background: url("assets/img/WallpaperDog-10865582.jpg");
-  background: url("assets/img/WallpaperDog-10865582.jpg");
-}*/
