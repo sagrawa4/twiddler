@@ -23,7 +23,7 @@ $(document).ready(function(){
         var $tweet = $('<div class="tweet"></div>');
         //var $renderUser = $('<button class="username">' + '@'+tweet.user + '</button>')
         $tweet.append('<img class="profile-photo" src="assets/img/' + tweet.user + '.png" />')
-        $tweet.append('<div class="username">' + '@'+tweet.user + '</div>')
+        $tweet.append('<button class="username">' + '@'+tweet.user + '</button>')
         $tweet.append('<div class="message">' + tweet.message + '</div>')
         $tweet.append('<div class="timestamp">' + jQuery.timeago(tweet.created_at) + '</div>')
         $tweet.append('<i class="fas fa-comment icon comment"></i>')
@@ -44,7 +44,7 @@ $(document).ready(function(){
         console.log(tweet);
         var $tweet = $('<div class="tweet"></div>');
         $tweet.append('<img class="profile-photo" src="assets/img/' + tweet.user + '.png" />')
-        $tweet.append('<div class="username">' + '@'+tweet.user + '</div>')
+        $tweet.append('<button class="username">' + '@'+tweet.user + '</button>')
         $tweet.append('<div class="message">' + tweet.message + '</div>')
         $tweet.append('<div class="timestamp">' + jQuery.timeago(tweet.created_at) + '</div>')
         $tweet.append('<i class="fas fa-comment icon comment"></i>')
