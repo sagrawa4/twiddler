@@ -20,8 +20,11 @@ providing a space for you to apply styles to your app's outermost HTML element -
 }
 
 body {
-  background: url("assets/img/WallpaperDog-10865582.jpg");
+
 }
+
+
+
 
 h1 {
  font-family: friendsfont;
@@ -45,9 +48,8 @@ h1 {
 
 .tweet {
   width: 800px;
-  height: 200px;
+  height: 250px;
   border-radius: 25px;
-  margin:auto;
   border: 10px solid blueviolet;
   padding: 80px;
   color: aqua;
@@ -64,7 +66,7 @@ h1 {
   overflow: hidden;
   float:left;
   padding-top:50px;
-  padding-bottom:30px;
+  padding-bottom:5px;
   padding-left: 5px;
 }
 
@@ -72,8 +74,10 @@ h1 {
   color: yellowgreen;
   font-family: Arial, Helvetica, sans-serif;
   font-size:xx-large;
-  position:relative;
-  right:300px;
+  border-radius: 25px;
+  background-color: yellow;
+  color: black;
+  font-family: friendsfont;
 
 }
 
@@ -83,6 +87,10 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: large;
   margin-top: 20px;
+}
+
+.icon {
+
 }
 
 
@@ -137,5 +145,6 @@ margin-left: 40%;
 
 /*.message {
   font-family: 'Mate SC', serif;
+  background: url("assets/img/WallpaperDog-10865582.jpg");
   background: url("assets/img/WallpaperDog-10865582.jpg");
 }*/
